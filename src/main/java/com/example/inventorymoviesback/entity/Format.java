@@ -38,10 +38,12 @@ public class Format {
   private List<Region> formatRegion;
 
   @CreationTimestamp
-  private Timestamp created_at;
+  @Column(name = "created_at")
+  private Timestamp createdAt;
 
   @UpdateTimestamp
-  private Timestamp updated_at;
+  @Column(name = "updated_at")
+  private Timestamp updatedAt;
 
   public Format() {
   }

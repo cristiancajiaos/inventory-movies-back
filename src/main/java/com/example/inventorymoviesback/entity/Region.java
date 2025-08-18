@@ -8,8 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "regions")
@@ -20,12 +23,20 @@ public class Region {
   @Column(name = "region_id")
   private Long regionId;
 
-  @Column(name = "region_code")
+  @Column(name = "region_code", nullable = false)
   private String regionCode;
 
   @ManyToOne
-  @JoinColumn(name = "region_format_id")
+  @JoinColumn(name = "region_format_id", nullable = false)
   private Format regionFormat;
+
+  @CreationTimestamp
+  @Column(name = "created_at")
+  private Timestamp createdAt;
+
+  @UpdateTimestamp
+  @Column(name = "updated_at")
+  private Timestamp updatedAt;
 
   public Region() {
   }
