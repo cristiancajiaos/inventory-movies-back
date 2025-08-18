@@ -1,6 +1,7 @@
 package com.example.inventorymoviesback.controller;
 
 import com.example.inventorymoviesback.entity.Region;
+import com.example.inventorymoviesback.record.CountryDTO;
 import com.example.inventorymoviesback.record.RegionDTO;
 import com.example.inventorymoviesback.service.RegionService;
 import java.util.List;
@@ -38,9 +39,25 @@ public class RegionController {
     return ResponseEntity.ok(foundRegions);
   }
 
+  @GetMapping("/{regionId}")
+  public ResponseEntity<RegionDTO> getRegionById(@PathVariable("regionId") Long regionId) {
+    try {
+      RegionDTO foundRegion = regionService.getRegionById(regionId);
+      return ResponseEntity.ok(foundRegion);
+    } catch (Exception ex) {
+      System.err.println("Error: " + ex);
+      return ResponseEntity.notFound().build();
+    }
+  }
+
   @GetMapping("/format/{formatId}")
   public ResponseEntity<List<RegionDTO>> getRegionsByFormat(@PathVariable("formatId") Long formatId) {
-    List<RegionDTO> foundRegions = regionService.getRegionsByFormat(formatId);
-    return ResponseEntity.ok(foundRegions);
+    try {
+      List<RegionDTO> foundRegions = regionService.getRegionsByFormat(formatId);
+      return ResponseEntity.ok(foundRegions);
+    } catch (Exception ex) {
+      System.err.println("Error: " + ex);
+      return ResponseEntity.notFound().build();
+    }
   }
 }

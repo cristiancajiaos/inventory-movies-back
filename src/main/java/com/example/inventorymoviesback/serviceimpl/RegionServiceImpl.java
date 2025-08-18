@@ -33,6 +33,12 @@ public class RegionServiceImpl implements RegionService  {
   }
 
   @Override
+  public RegionDTO getRegionById(Long regionId) {
+    Region foundRegion = regionRepository.getRegionById(regionId);
+    return convertToDTO(foundRegion);
+  }
+
+  @Override
   public List<RegionDTO> getRegionsByFormat(Long formatId) {
     return regionRepository.getRegionsByFormat(formatId).stream().map(this::convertToDTO).collect(
         Collectors.toList());
