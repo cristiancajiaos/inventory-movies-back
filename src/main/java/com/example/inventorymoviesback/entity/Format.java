@@ -34,9 +34,8 @@ public class Format {
   @Column(name = "format_media_type", nullable = false)
   private String formatMediaType;
 
-  @ManyToOne
-  @JoinColumn(name = "format_region_id")
-  private Region region;
+  @OneToMany(mappedBy = "regionFormat")
+  private List<Region> formatRegion;
 
   @CreationTimestamp
   private Timestamp created_at;
