@@ -32,6 +32,12 @@ public class CountryServiceImpl implements CountryService {
     return countryRepository.getAllCountries().stream().map(this::convertToDTO).collect(Collectors.toList());
   }
 
+  @Override
+  public CountryDTO getCountryById(Long countryId) {
+    Country foundCountry = countryRepository.findById(countryId).orElseThrow();
+    return convertToDTO(foundCountry);
+  }
+
   private Country convertToEntity(CountryDTO countryDTO) {
     return new Country(countryDTO.countryId(), countryDTO.countryName());
   }

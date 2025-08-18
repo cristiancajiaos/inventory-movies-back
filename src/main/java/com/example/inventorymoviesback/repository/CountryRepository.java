@@ -10,4 +10,7 @@ public interface CountryRepository extends JpaRepository<Country, Long> {
   @Query(value = "SELECT * FROM countries c ORDER BY c.country_id ASC", nativeQuery = true)
   List<Country> getAllCountries();
 
+  @Query(value = "SELECT * FROM countries c WHERE c.country_id = :countryId", nativeQuery = true)
+  Country getCountryById(Long countryId);
+
 }

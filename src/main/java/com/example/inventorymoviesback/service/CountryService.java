@@ -9,4 +9,6 @@ public interface CountryService {
 
   List<CountryDTO> getAllCountries();
 
+  CountryDTO getCountryById(Long countryId);
+
 }
