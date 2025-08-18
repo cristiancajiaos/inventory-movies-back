@@ -4,6 +4,8 @@ import com.example.inventorymoviesback.entity.Country;
 import com.example.inventorymoviesback.record.CountryDTO;
 import com.example.inventorymoviesback.repository.CountryRepository;
 import com.example.inventorymoviesback.service.CountryService;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,11 @@ public class CountryServiceImpl implements CountryService {
     Country countryToCreate = convertToEntity(countryDTO);
     Country createdCountry = countryRepository.save(countryToCreate);
     return convertToDTO(createdCountry);
+  }
+
+  @Override
+  public List<CountryDTO> getAllCountries() {
+    return countryRepository.getAllCountries().stream().map(this::convertToDTO).collect(Collectors.toList());
   }
 
   private Country convertToEntity(CountryDTO countryDTO) {
