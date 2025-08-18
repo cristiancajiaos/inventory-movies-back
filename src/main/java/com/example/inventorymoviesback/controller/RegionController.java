@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,12 @@ public class RegionController {
   @GetMapping
   public ResponseEntity<List<RegionDTO>> getAllRegions() {
     List<RegionDTO> foundRegions = regionService.getAllRegions();
+    return ResponseEntity.ok(foundRegions);
+  }
+
+  @GetMapping("/format/{formatId}")
+  public ResponseEntity<List<RegionDTO>> getRegionsByFormat(@PathVariable("formatId") Long formatId) {
+    List<RegionDTO> foundRegions = regionService.getRegionsByFormat(formatId);
     return ResponseEntity.ok(foundRegions);
   }
 }

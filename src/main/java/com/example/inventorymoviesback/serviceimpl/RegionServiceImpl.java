@@ -32,6 +32,12 @@ public class RegionServiceImpl implements RegionService  {
     return regionRepository.getAllRegions().stream().map(this::convertToDTO).collect(Collectors.toList());
   }
 
+  @Override
+  public List<RegionDTO> getRegionsByFormat(Long formatId) {
+    return regionRepository.getRegionsByFormat(formatId).stream().map(this::convertToDTO).collect(
+        Collectors.toList());
+  }
+
   private Region convertToEntity(RegionDTO regionDTO) {
     return new Region(regionDTO.regionId(), regionDTO.regionCode(), regionDTO.regionFormat());
   }

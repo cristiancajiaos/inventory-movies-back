@@ -9,4 +9,6 @@ public interface RegionService {
 
   List<RegionDTO> getAllRegions();
 
+  List<RegionDTO> getRegionsByFormat(Long formatId);
+
 }
