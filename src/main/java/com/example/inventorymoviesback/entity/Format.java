@@ -18,16 +18,16 @@ public class Format {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "format_id")
-  private Long format_id;
+  private Long formatId;
 
   @Column(name = "format_name", nullable = false, unique = true)
-  private String format_name;
+  private String formatName;
 
   @Column(name = "format_acronym", nullable = false, unique = true)
-  private String format_acronym;
+  private String formatAcronym;
 
   @Column(name = "format_media_type", nullable = false)
-  private String format_media_type;
+  private String formatMediaType;
 
   @CreationTimestamp
   private Timestamp created_at;
@@ -38,43 +38,43 @@ public class Format {
   public Format() {
   }
 
-  public Format(Long format_id, String format_name, String format_acronym,
-      String format_media_type) {
-    this.format_id = format_id;
-    this.format_name = format_name;
-    this.format_acronym = format_acronym;
-    this.format_media_type = format_media_type;
+  public Format(Long formatId, String formatName, String formatAcronym,
+      String formatMediaType) {
+    this.formatId = formatId;
+    this.formatName = formatName;
+    this.formatAcronym = formatAcronym;
+    this.formatMediaType = formatMediaType;
   }
 
-  public Long getFormat_id() {
-    return format_id;
+  public Long getFormatId() {
+    return formatId;
   }
 
-  public void setFormat_id(Long format_id) {
-    this.format_id = format_id;
+  public void setFormatId(Long formatId) {
+    this.formatId = formatId;
   }
 
-  public String getFormat_name() {
-    return format_name;
+  public String getFormatName() {
+    return formatName;
   }
 
-  public void setFormat_name(String format_name) {
-    this.format_name = format_name;
+  public void setFormatName(String formatName) {
+    this.formatName = formatName;
   }
 
-  public String getFormat_acronym() {
-    return format_acronym;
+  public String getFormatAcronym() {
+    return formatAcronym;
   }
 
-  public void setFormat_acronym(String format_acronym) {
-    this.format_acronym = format_acronym;
+  public void setFormatAcronym(String formatAcronym) {
+    this.formatAcronym = formatAcronym;
   }
 
-  public String getFormat_media_type() {
-    return format_media_type;
+  public String getFormatMediaType() {
+    return formatMediaType;
   }
 
-  public void setFormat_media_type(String format_media_type) {
-    this.format_media_type = format_media_type;
+  public void setFormatMediaType(String formatMediaType) {
+    this.formatMediaType = formatMediaType;
   }
 }
