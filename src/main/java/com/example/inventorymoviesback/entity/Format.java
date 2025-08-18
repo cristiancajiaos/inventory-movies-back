@@ -5,9 +5,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -28,6 +33,10 @@ public class Format {
 
   @Column(name = "format_media_type", nullable = false)
   private String formatMediaType;
+
+  @ManyToOne
+  @JoinColumn(name = "format_region_id")
+  private Region region;
 
   @CreationTimestamp
   private Timestamp created_at;
