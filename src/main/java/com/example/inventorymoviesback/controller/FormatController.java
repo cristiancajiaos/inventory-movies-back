@@ -38,7 +38,7 @@ public class FormatController {
     return ResponseEntity.ok(formats);
   }
 
-  @GetMapping("/format-id/{formatId}")
+  @GetMapping("/{formatId}")
   public ResponseEntity<FormatDTO> getFormatById(@PathVariable("formatId") Long formatId) {
     try {
       FormatDTO foundFormat = formatService.getFormatById(formatId);
