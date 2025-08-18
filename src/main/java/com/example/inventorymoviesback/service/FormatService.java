@@ -9,4 +9,6 @@ public interface FormatService {
 
   List<FormatDTO> getAllFormats();
 
+  FormatDTO getFormatById(Long formatId);
+
 }

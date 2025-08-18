@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,5 +36,16 @@ public class FormatController {
   public ResponseEntity<List<FormatDTO>> getAllFormats() {
     List<FormatDTO> formats = formatService.getAllFormats();
     return ResponseEntity.ok(formats);
+  }
+
+  @GetMapping("/format-id/{formatId}")
+  public ResponseEntity<FormatDTO> getFormatById(@PathVariable("formatId") Long formatId) {
+    try {
+      FormatDTO foundFormat = formatService.getFormatById(formatId);
+      return ResponseEntity.ok(foundFormat);
+    } catch (Exception ex) {
+      System.err.println("Error: " + ex);
+      return ResponseEntity.notFound().build();
+    }
   }
 }

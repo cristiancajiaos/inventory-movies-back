@@ -4,9 +4,13 @@ import com.example.inventorymoviesback.entity.Format;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface FormatRepository extends JpaRepository<Format, Long> {
 
   @Query(value = "SELECT * FROM formats f ORDER BY f.format_id ASC", nativeQuery = true)
   List<Format> getAllFormats();
+
+  @Query(value = "SELECT * FROM formats f WHERE f.format_id = :formatId", nativeQuery = true)
+  Format getFormatById(@Param("formatId") Long formatId);
 }

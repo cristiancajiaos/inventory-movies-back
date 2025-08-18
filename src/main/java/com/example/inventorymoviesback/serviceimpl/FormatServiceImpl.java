@@ -32,6 +32,12 @@ public class FormatServiceImpl implements FormatService {
     return formatRepository.getAllFormats().stream().map(this::convertToDTO).collect(Collectors.toList());
   }
 
+  @Override
+  public FormatDTO getFormatById(Long formatId) {
+    Format foundFormat = formatRepository.getFormatById(formatId);
+    return convertToDTO(foundFormat);
+  }
+
   private Format convertToEntity(FormatDTO formatDTO) {
     return new Format(formatDTO.formatId(), formatDTO.formatName(), formatDTO.formatAcronym(), formatDTO.formatMediaType());
   }
