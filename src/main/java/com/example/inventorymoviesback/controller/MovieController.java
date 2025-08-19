@@ -53,6 +53,12 @@ public class MovieController {
     return ResponseEntity.ok(foundMovies);
   }
 
+  @GetMapping("/ordered-by-length-min-asc")
+  public ResponseEntity<List<MovieDTO>> getMoviesOrderedByLengthMinAsc() {
+    List<MovieDTO> foundMovies = movieService.getMoviesOrderedByLengthMinAsc();
+    return ResponseEntity.ok(foundMovies);
+  }
+
   @GetMapping("/title/{movieTitle}")
   public ResponseEntity<List<MovieDTO>> getMoviesLikeTitle(@PathVariable("movieTitle") String movieTitle) {
     List<MovieDTO> foundMovies = movieService.getMoviesLikeTitle(movieTitle);

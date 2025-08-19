@@ -15,4 +15,6 @@ public interface MovieService {
 
   List<MovieDTO> getMoviesOrderedByYearDesc();
 
+  List<MovieDTO> getMoviesOrderedByLengthMinAsc();
+
 }

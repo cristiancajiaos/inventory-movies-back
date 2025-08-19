@@ -17,4 +17,6 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
   @Query(value = "SELECT * FROM movies m ORDER BY m.movie_year DESC", nativeQuery = true)
   List<Movie> getMoviesOrderedByYearDesc();
 
+  @Query(value = "SELECT * FROM movies m ORDER BY m.movie_length_min ASC", nativeQuery = true)
+  List<Movie> getMoviesOrderedByLengthMinAsc();
 }

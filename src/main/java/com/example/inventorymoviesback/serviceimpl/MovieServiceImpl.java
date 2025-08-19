@@ -49,6 +49,12 @@ public class MovieServiceImpl implements MovieService {
         Collectors.toList());
   }
 
+  @Override
+  public List<MovieDTO> getMoviesOrderedByLengthMinAsc() {
+    return movieRepository.getMoviesOrderedByLengthMinAsc().stream().map(this::convertToDTO).collect(
+        Collectors.toList());
+  }
+
   private Movie convertToEntity(MovieDTO movieDTO) {
     return new Movie(movieDTO.movieId(), movieDTO.movieTitle(), movieDTO.movieYear(), movieDTO.movieLengthMin());
   }
@@ -56,4 +62,6 @@ public class MovieServiceImpl implements MovieService {
   private MovieDTO convertToDTO(Movie movie) {
     return new MovieDTO(movie.getMovieId(), movie.getMovieTitle(), movie.getMovieYear(), movie.getMovieLengthMin());
   }
+
+
 }
