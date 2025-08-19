@@ -37,6 +37,12 @@ public class MovieServiceImpl implements MovieService {
     return convertToDTO(foundMovie);
   }
 
+  @Override
+  public List<MovieDTO> getMovieLikeTitle(String movieTitle) {
+    return movieRepository.getMovieLikeTitle(movieTitle).stream().map(this::convertToDTO).collect(
+        Collectors.toList());
+  }
+
   private Movie convertToEntity(MovieDTO movieDTO) {
     return new Movie(movieDTO.movieId(), movieDTO.movieTitle(), movieDTO.movieYear(), movieDTO.movieLengthMin());
   }

@@ -46,4 +46,10 @@ public class MovieController {
       return ResponseEntity.notFound().build();
     }
   }
+
+  @GetMapping("/title/{movieTitle}")
+  public ResponseEntity<List<MovieDTO>> getMovieLikeTitle(@PathVariable("movieTitle") String movieTitle) {
+    List<MovieDTO> foundMovies = movieService.getMovieLikeTitle(movieTitle);
+    return ResponseEntity.ok(foundMovies);
+  }
 }

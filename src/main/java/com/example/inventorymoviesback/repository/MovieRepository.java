@@ -11,4 +11,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
   @Query(value = "SELECT * FROM movies m ORDER BY m.movie_id ASC", nativeQuery = true)
   List<Movie> getAllMovies();
 
+  @Query(value = "SELECT * FROM movies m WHERE LOWER(m.movie_title) LIKE CONCAT('%', :movieTitle, '%')", nativeQuery = true)
+  List<Movie> getMovieLikeTitle(String movieTitle);
+
 }
