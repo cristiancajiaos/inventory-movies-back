@@ -5,8 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.sql.Timestamp;
+import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -21,6 +23,9 @@ public class Country {
 
   @Column(name = "country_name", nullable = false, unique = true)
   private String countryName;
+
+  @OneToMany(mappedBy = "country")
+  private List<Movie> movies;
 
   @CreationTimestamp
   @Column(name = "created_at")
