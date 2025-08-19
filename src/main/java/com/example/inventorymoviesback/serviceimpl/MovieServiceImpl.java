@@ -31,6 +31,12 @@ public class MovieServiceImpl implements MovieService {
     return movieRepository.getAllMovies().stream().map(this::convertToDTO).collect(Collectors.toList());
   }
 
+  @Override
+  public MovieDTO getMovieById(Long movieId) {
+    Movie foundMovie = movieRepository.findById(movieId).orElseThrow();
+    return convertToDTO(foundMovie);
+  }
+
   private Movie convertToEntity(MovieDTO movieDTO) {
     return new Movie(movieDTO.movieId(), movieDTO.movieTitle(), movieDTO.movieYear(), movieDTO.movieLengthMin());
   }

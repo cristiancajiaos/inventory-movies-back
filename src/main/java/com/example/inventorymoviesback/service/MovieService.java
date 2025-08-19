@@ -9,4 +9,6 @@ public interface MovieService {
 
   List<MovieDTO> getAllMovies();
 
+  MovieDTO getMovieById(Long movieId);
+
 }
