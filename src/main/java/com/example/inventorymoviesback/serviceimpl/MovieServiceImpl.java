@@ -38,8 +38,14 @@ public class MovieServiceImpl implements MovieService {
   }
 
   @Override
-  public List<MovieDTO> getMovieLikeTitle(String movieTitle) {
+  public List<MovieDTO> getMoviesLikeTitle(String movieTitle) {
     return movieRepository.getMovieLikeTitle(movieTitle).stream().map(this::convertToDTO).collect(
+        Collectors.toList());
+  }
+
+  @Override
+  public List<MovieDTO> getMoviesOrderedByYearDesc() {
+    return movieRepository.getMoviesOrderedByYearDesc().stream().map(this::convertToDTO).collect(
         Collectors.toList());
   }
 

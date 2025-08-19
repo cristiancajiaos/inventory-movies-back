@@ -11,6 +11,8 @@ public interface MovieService {
 
   MovieDTO getMovieById(Long movieId);
 
-  List<MovieDTO> getMovieLikeTitle(String movieTitle);
+  List<MovieDTO> getMoviesLikeTitle(String movieTitle);
+
+  List<MovieDTO> getMoviesOrderedByYearDesc();
 
 }

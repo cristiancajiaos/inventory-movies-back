@@ -47,9 +47,15 @@ public class MovieController {
     }
   }
 
+  @GetMapping("/ordered-by-year-desc")
+  public ResponseEntity<List<MovieDTO>> getMoviesOrderedByYearDesc() {
+    List<MovieDTO> foundMovies = movieService.getMoviesOrderedByYearDesc();
+    return ResponseEntity.ok(foundMovies);
+  }
+
   @GetMapping("/title/{movieTitle}")
-  public ResponseEntity<List<MovieDTO>> getMovieLikeTitle(@PathVariable("movieTitle") String movieTitle) {
-    List<MovieDTO> foundMovies = movieService.getMovieLikeTitle(movieTitle);
+  public ResponseEntity<List<MovieDTO>> getMoviesLikeTitle(@PathVariable("movieTitle") String movieTitle) {
+    List<MovieDTO> foundMovies = movieService.getMoviesLikeTitle(movieTitle);
     return ResponseEntity.ok(foundMovies);
   }
 }
